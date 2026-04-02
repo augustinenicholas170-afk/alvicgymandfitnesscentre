@@ -64,11 +64,6 @@ nav.shrunk{height:58px;background:rgba(0,0,0,0.98);}
 .btn-red:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(226,0,26,0.65);}
 .btn-ghost{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:.9rem;letter-spacing:3px;text-transform:uppercase;padding:12px 30px;background:transparent;color:var(--silver);border:1px solid rgba(192,192,192,0.35);border-radius:3px;cursor:pointer;text-decoration:none;transition:all .3s;display:inline-block;text-align:center;}
 .btn-ghost:hover{background:rgba(192,192,192,0.08);border-color:var(--silver);color:#fff;}
-.btn-attend{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:.9rem;letter-spacing:3px;text-transform:uppercase;padding:12px 30px;background:linear-gradient(135deg,#0070e0,#004a9e);color:#fff;border:none;border-radius:3px;cursor:pointer;text-decoration:none;position:relative;overflow:hidden;transition:transform .25s,box-shadow .3s;box-shadow:0 4px 22px rgba(0,112,224,0.45);display:inline-flex;align-items:center;gap:8px;justify-content:center;}
-.btn-attend::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),transparent);transition:left .5s;}
-.btn-attend:hover::before{left:100%;}
-.btn-attend:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,112,224,0.65);}
-.btn-attend i{font-size:1rem;}
 .hero-stats{display:flex;gap:28px;margin-top:40px;flex-wrap:wrap;}
 .h-stat{display:flex;flex-direction:column;}
 .h-stat-num{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--red);line-height:1;}
@@ -133,7 +128,8 @@ section{position:relative;z-index:2;}
 .service-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:linear-gradient(180deg,var(--red),var(--red-dark));transition:height .4s;}
 .service-card:hover{transform:translateY(-5px);border-color:rgba(226,0,26,0.35);box-shadow:0 12px 40px rgba(226,0,26,0.15);}
 .service-card:hover::before{height:100%;}
-.service-emoji{font-size:2rem;margin-bottom:12px;display:block;filter:drop-shadow(0 0 8px rgba(226,0,26,0.45));}
+.service-icon{width:44px;height:44px;border-radius:6px;background:linear-gradient(135deg,rgba(226,0,26,0.15),rgba(139,0,16,0.1));border:1px solid rgba(226,0,26,0.25);display:flex;align-items:center;justify-content:center;margin-bottom:14px;color:var(--red);font-size:1.1rem;transition:background .3s,box-shadow .3s;}
+.service-card:hover .service-icon{background:linear-gradient(135deg,rgba(226,0,26,0.3),rgba(139,0,16,0.2));box-shadow:0 0 16px rgba(226,0,26,0.25);}
 .service-title{font-family:'Rajdhani',sans-serif;font-size:1.05rem;font-weight:700;letter-spacing:2px;color:#fff;margin-bottom:10px;text-transform:uppercase;}
 .service-desc{font-size:.86rem;color:var(--silver-dark);line-height:1.75;}
 #pricing{padding:90px 0;background:linear-gradient(180deg,var(--black3) 0%,var(--black) 100%);}
@@ -149,6 +145,12 @@ section{position:relative;z-index:2;}
 .price-features{list-style:none;margin-bottom:32px;text-align:left;display:flex;flex-direction:column;gap:12px;}
 .price-features li{display:flex;align-items:flex-start;gap:12px;font-family:'Rajdhani',sans-serif;font-size:.93rem;color:var(--silver-light);}
 .price-features li i{color:var(--red);font-size:1rem;margin-top:2px;flex-shrink:0;}
+
+/* TERMS & CONDITIONS SECTION */
+#terms{padding:90px 0;background:var(--black3);}
+.terms-image-wrap{display:flex;justify-content:center;align-items:center;}
+.terms-image-wrap img{max-width:820px;width:100%;border-radius:8px;border:1px solid rgba(226,0,26,0.3);box-shadow:0 8px 40px rgba(0,0,0,0.7),0 0 60px rgba(226,0,26,0.08);}
+
 #contact{padding:90px 0;background:var(--black2);}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
 .contact-info{display:flex;flex-direction:column;gap:20px;}
@@ -173,65 +175,9 @@ footer{position:relative;z-index:2;background:var(--black);border-top:1px solid 
 .footer-bottom span{color:var(--red);}
 .fade-in{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
 .fade-in.visible{opacity:1;transform:translateY(0);}
-
-/* ATTENDANCE MODAL */
-#attendanceModal{display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;padding:20px;}
-#attendanceModal.open{display:flex;}
-.modal-backdrop{position:absolute;inset:0;background:rgba(0,0,0,0.88);backdrop-filter:blur(12px);cursor:pointer;}
-.modal-box{position:relative;z-index:1;width:100%;max-width:540px;background:linear-gradient(145deg,rgba(0,8,20,0.98),rgba(0,20,50,0.96));border:1px solid rgba(0,112,224,0.45);border-radius:14px;padding:40px 36px;box-shadow:0 0 60px rgba(0,112,224,0.25),0 0 120px rgba(0,50,140,0.15);animation:modalIn .35s cubic-bezier(0.34,1.56,0.64,1);overflow:hidden;}
-.modal-box::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:300px;height:300px;background:radial-gradient(circle,rgba(0,112,224,0.18),transparent 70%);border-radius:50%;pointer-events:none;}
-@keyframes modalIn{from{opacity:0;transform:scale(0.88) translateY(24px);}to{opacity:1;transform:scale(1) translateY(0);}}
-.modal-close{position:absolute;top:16px;right:18px;background:none;border:none;color:var(--silver-dark);font-size:1.4rem;cursor:pointer;transition:color .2s;line-height:1;padding:4px;}
-.modal-close:hover{color:#fff;}
-.modal-logo-row{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:20px;}
-.modal-logo-row img{width:44px;height:44px;border-radius:50%;border:2px solid #0070e0;box-shadow:0 0 14px rgba(0,112,224,0.6);}
-.modal-title{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:3px;background:linear-gradient(90deg,#0070e0,#60b0ff,#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.modal-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(0,112,224,0.5),transparent);margin-bottom:22px;}
-.modal-date-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(0,112,224,0.12);border:1px solid rgba(0,112,224,0.3);border-radius:20px;padding:5px 14px;font-family:'Rajdhani',sans-serif;font-size:.78rem;letter-spacing:2px;color:#60b0ff;text-transform:uppercase;margin-bottom:22px;}
-.modal-label{font-family:'Rajdhani',sans-serif;font-size:.76rem;letter-spacing:3px;color:#60b0ff;text-transform:uppercase;margin-bottom:8px;display:block;}
-.modal-search-wrap{position:relative;margin-bottom:6px;}
-.modal-search-wrap i{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#0070e0;font-size:.95rem;pointer-events:none;}
-#attendanceInput{width:100%;padding:13px 14px 13px 42px;background:rgba(0,30,70,0.6);border:1px solid rgba(0,112,224,0.35);border-radius:8px;color:#fff;font-family:'Exo 2',sans-serif;font-size:.97rem;outline:none;transition:border-color .25s,box-shadow .25s;}
-#attendanceInput:focus{border-color:#0070e0;box-shadow:0 0 0 3px rgba(0,112,224,0.15);}
-#attendanceInput::placeholder{color:rgba(255,255,255,0.28);}
-#autocompleteList{position:absolute;top:calc(100% + 4px);left:0;right:0;background:rgba(0,12,35,0.98);border:1px solid rgba(0,112,224,0.4);border-radius:8px;max-height:230px;overflow-y:auto;z-index:100;display:none;box-shadow:0 8px 32px rgba(0,0,0,0.7);}
-#autocompleteList.show{display:block;}
-#autocompleteList::-webkit-scrollbar{width:4px;}
-#autocompleteList::-webkit-scrollbar-thumb{background:#0070e0;border-radius:2px;}
-.autocomplete-item{padding:11px 16px;cursor:pointer;font-family:'Rajdhani',sans-serif;font-size:.97rem;color:var(--silver-light);letter-spacing:.5px;border-bottom:1px solid rgba(0,112,224,0.1);transition:background .15s;display:flex;align-items:center;gap:10px;}
-.autocomplete-item:last-child{border-bottom:none;}
-.autocomplete-item:hover,.autocomplete-item.selected{background:rgba(0,112,224,0.18);color:#fff;}
-.autocomplete-item i{color:#0070e0;font-size:.85rem;flex-shrink:0;}
-.autocomplete-item .match{color:#60b0ff;font-weight:700;}
-.modal-hint{font-family:'Rajdhani',sans-serif;font-size:.74rem;letter-spacing:1px;color:rgba(255,255,255,0.3);margin-top:6px;margin-bottom:22px;}
-#selectedChip{display:none;align-items:center;gap:10px;background:rgba(0,112,224,0.15);border:1px solid rgba(0,112,224,0.4);border-radius:8px;padding:12px 16px;margin-bottom:22px;}
-#selectedChip.show{display:flex;}
-.chip-name{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:1px;color:#fff;flex:1;}
-.chip-icon{color:#0070e0;font-size:1.1rem;}
-.chip-clear{background:none;border:none;color:var(--silver-dark);cursor:pointer;font-size:1rem;padding:2px;transition:color .2s;}
-.chip-clear:hover{color:var(--red);}
-.modal-sheet-hint{background:rgba(0,112,224,0.08);border:1px solid rgba(0,112,224,0.2);border-radius:8px;padding:12px 14px;font-family:'Rajdhani',sans-serif;font-size:.8rem;color:#60b0ff;letter-spacing:.5px;margin-bottom:22px;display:flex;align-items:flex-start;gap:10px;}
-.modal-sheet-hint i{flex-shrink:0;margin-top:2px;color:#0070e0;}
-#submitAttendance{width:100%;padding:14px;background:linear-gradient(135deg,#0070e0,#004a9e);color:#fff;border:none;border-radius:8px;font-family:'Rajdhani',sans-serif;font-size:1rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;cursor:pointer;position:relative;overflow:hidden;transition:transform .2s,box-shadow .3s;box-shadow:0 4px 20px rgba(0,112,224,0.4);display:flex;align-items:center;justify-content:center;gap:10px;}
-#submitAttendance:disabled{opacity:.55;cursor:not-allowed;}
-#submitAttendance:not(:disabled):hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,112,224,0.6);}
-#submitAttendance::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.12),transparent);transition:left .5s;}
-#submitAttendance:not(:disabled):hover::before{left:100%;}
-#attendanceResult{margin-top:18px;border-radius:8px;padding:14px 18px;font-family:'Rajdhani',sans-serif;font-size:.9rem;letter-spacing:1px;display:none;align-items:center;gap:12px;}
-#attendanceResult.success{display:flex;background:rgba(26,158,63,0.12);border:1px solid rgba(26,158,63,0.4);color:#4cde7f;}
-#attendanceResult.error{display:flex;background:rgba(226,0,26,0.12);border:1px solid rgba(226,0,26,0.4);color:#ff6b6b;}
-#alreadyMarkedBanner{display:none;margin-top:12px;background:rgba(255,165,0,0.1);border:1px solid rgba(255,165,0,0.35);border-radius:8px;padding:12px 16px;font-family:'Rajdhani',sans-serif;font-size:.85rem;color:#ffa500;letter-spacing:.5px;align-items:center;gap:10px;}
-#alreadyMarkedBanner.show{display:flex;}
-#alreadyMarkedBanner i{flex-shrink:0;}
-.spinner{width:18px;height:18px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0;}
-@keyframes spin{to{transform:rotate(360deg);}}
-#attendFAB{position:fixed;bottom:28px;right:28px;z-index:900;width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,#0070e0,#004a9e);color:#fff;border:none;cursor:pointer;font-size:1.4rem;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 28px rgba(0,112,224,0.55);transition:transform .25s,box-shadow .3s;}
-#attendFAB:hover{transform:scale(1.12);box-shadow:0 10px 36px rgba(0,112,224,0.75);}
-#attendFAB .fab-tooltip{position:absolute;bottom:calc(100% + 10px);right:0;background:rgba(0,0,0,0.9);color:#fff;font-family:'Rajdhani',sans-serif;font-size:.78rem;letter-spacing:2px;padding:6px 12px;border-radius:4px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s;}
-#attendFAB:hover .fab-tooltip{opacity:1;}
 @media(max-width:900px){.about-grid,.contact-grid{grid-template-columns:1fr;gap:36px;}.about-imgs{height:300px;}.hero-right-img{display:none;}}
-@media(max-width:768px){:root{--nav-h:60px;}nav{padding:0 14px;gap:8px;}.nav-links{display:none;}.hamburger{display:flex;}.nav-logo img{height:38px;width:38px;}.nav-brand-center{font-size:clamp(0.85rem,3.5vw,1.1rem);}#home{min-height:100svh;}.hero-content{padding:50px 20px 80px;max-width:100%;}.hero-h1{font-size:clamp(2.6rem,10vw,4rem);}.hero-stats{gap:18px;}.h-stat-num{font-size:1.9rem;}.scroll-hint{left:20px;font-size:.65rem;}.carousel-section{height:56vw;min-height:220px;}.slide-caption{bottom:40px;}.carousel-arrow{width:38px;height:38px;font-size:.85rem;}.quote-band{padding:38px 20px;}.quote-text{font-size:clamp(1.15rem,4vw,1.6rem);}#about{padding:64px 0;}.about-imgs{height:260px;}#services{padding:64px 0;}.services-grid{grid-template-columns:1fr;}#pricing{padding:64px 0;}.price-card{padding:32px 22px;}.price-amount{font-size:4.2rem;}#contact{padding:64px 0;}.contact-map{height:260px;}.footer-top{flex-direction:column;align-items:center;text-align:center;}.footer-logo{justify-content:center;}.footer-bottom{font-size:.72rem;letter-spacing:1px;}.modal-box{padding:28px 20px;}#attendFAB{bottom:20px;right:20px;width:54px;height:54px;font-size:1.2rem;}}
-@media(max-width:480px){:root{--nav-h:56px;}nav{padding:0 12px;gap:6px;}.nav-logo img{height:34px;width:34px;}.nav-brand-center{font-size:clamp(0.78rem,3.2vw,1rem);}.hero-content{padding:44px 16px 72px;}.hero-h1{font-size:clamp(2.4rem,9vw,3.2rem);}.hero-btns{flex-direction:column;align-items:flex-start;gap:10px;}.btn-red,.btn-ghost,.btn-attend{width:100%;text-align:center;}.hero-stats{gap:14px;}.carousel-section{height:62vw;min-height:200px;}.slide-caption span{letter-spacing:4px;}.carousel-arrow{width:32px;height:32px;font-size:.75rem;}.carousel-arrow.prev{left:8px;}.carousel-arrow.next{right:8px;}.price-card{padding:28px 16px;}.price-amount{font-size:3.8rem;}.contact-card{gap:14px;padding:15px 16px;}.contact-icon{width:42px;height:42px;font-size:1rem;}}
+@media(max-width:768px){:root{--nav-h:60px;}nav{padding:0 14px;gap:8px;}.nav-links{display:none;}.hamburger{display:flex;}.nav-logo img{height:38px;width:38px;}.nav-brand-center{font-size:clamp(0.85rem,3.5vw,1.1rem);}#home{min-height:100svh;}.hero-content{padding:50px 20px 80px;max-width:100%;}.hero-h1{font-size:clamp(2.6rem,10vw,4rem);}.hero-stats{gap:18px;}.h-stat-num{font-size:1.9rem;}.scroll-hint{left:20px;font-size:.65rem;}.carousel-section{height:56vw;min-height:220px;}.slide-caption{bottom:40px;}.carousel-arrow{width:38px;height:38px;font-size:.85rem;}.quote-band{padding:38px 20px;}.quote-text{font-size:clamp(1.15rem,4vw,1.6rem);}#about{padding:64px 0;}.about-imgs{height:260px;}#services{padding:64px 0;}.services-grid{grid-template-columns:1fr;}#pricing{padding:64px 0;}.price-card{padding:32px 22px;}.price-amount{font-size:4.2rem;}#contact{padding:64px 0;}.contact-map{height:260px;}.footer-top{flex-direction:column;align-items:center;text-align:center;}.footer-logo{justify-content:center;}.footer-bottom{font-size:.72rem;letter-spacing:1px;}}
+@media(max-width:480px){:root{--nav-h:56px;}nav{padding:0 12px;gap:6px;}.nav-logo img{height:34px;width:34px;}.nav-brand-center{font-size:clamp(0.78rem,3.2vw,1rem);}.hero-content{padding:44px 16px 72px;}.hero-h1{font-size:clamp(2.4rem,9vw,3.2rem);}.hero-btns{flex-direction:column;align-items:flex-start;gap:10px;}.btn-red,.btn-ghost{width:100%;text-align:center;}.hero-stats{gap:14px;}.carousel-section{height:62vw;min-height:200px;}.slide-caption span{letter-spacing:4px;}.carousel-arrow{width:32px;height:32px;font-size:.75rem;}.carousel-arrow.prev{left:8px;}.carousel-arrow.next{right:8px;}.price-card{padding:28px 16px;}.price-amount{font-size:3.8rem;}.contact-card{gap:14px;padding:15px 16px;}.contact-icon{width:42px;height:42px;font-size:1rem;}}
 </style>
 </head>
 <body>
@@ -248,6 +194,7 @@ footer{position:relative;z-index:2;background:var(--black);border-top:1px solid 
       <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#terms">Terms</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
@@ -261,6 +208,7 @@ footer{position:relative;z-index:2;background:var(--black);border-top:1px solid 
   <a href="#about" onclick="closeMenu()">About</a>
   <a href="#services" onclick="closeMenu()">Services</a>
   <a href="#pricing" onclick="closeMenu()">Pricing</a>
+  <a href="#terms" onclick="closeMenu()">Terms</a>
   <a href="#contact" onclick="closeMenu()">Contact</a>
 </div>
 
@@ -285,9 +233,6 @@ footer{position:relative;z-index:2;background:var(--black);border-top:1px solid 
     <div class="hero-btns">
       <a href="#services" class="btn-red">Explore Services</a>
       <a href="#contact" class="btn-ghost">Join Now</a>
-      <button class="btn-attend" onclick="openAttendance()">
-        <i class="fas fa-calendar-check"></i> Mark Attendance
-      </button>
     </div>
     <div class="hero-stats">
       <div class="h-stat"><span class="h-stat-num">&#8377;600</span><span class="h-stat-lbl">Per Month</span></div>
@@ -300,6 +245,7 @@ footer{position:relative;z-index:2;background:var(--black);border-top:1px solid 
 
 <div class="red-divider"></div>
 
+<!-- CAROUSEL: 7 slides total (3 original + 4 new) -->
 <div class="carousel-section" id="carousel">
   <div class="carousel-track" id="carouselTrack">
     <div class="carousel-slide active" id="slide0">
@@ -314,15 +260,28 @@ footer{position:relative;z-index:2;background:var(--black);border-top:1px solid 
       <img src="https://blogger.googleusercontent.com/img/a/AVvXsEg_PPK4JubFwUNcfOQYAEt-fdlXT3C2OsXcybxYKjg1ptmYbVyFx_TGB177GteCAuIYK0lYc0Ag8-AINt8u9Ym60QW6ddJftgLUPHqMambdn70Y1RehjrEIhiMEBGKbtlcljAiHdjVmIVCHzL_rARweGU1je09tErQog__DkWQWfYUGiDVunqtOBOi_0Wei" alt="ALVIC Fitness"/>
       <div class="slide-caption"><span>Transform Your Body</span></div>
     </div>
+    <!-- 4 NEW SLIDES -->
+    <div class="carousel-slide" id="slide3">
+      <img src="https://blogger.googleusercontent.com/img/a/AVvXsEifa9q3rOhI9Gcs3T2DFT7w0XB-iPcibInHRDb_8CcOGAqghouF5LrnjjlDbQucvhIMleAcRwpCuXqRr1eGhAfvicdfOGQeO1sL5Qs1SwqPXyRYIxy-VfhCK5qNfUq6D50yWUSc5Y7MNrktza0qJqe5kdGfmIzpGP-JTiNWjjTQaTd7HinI7JzM0_pAe_Aj" alt="ALVIC Gym"/>
+      <div class="slide-caption"><span>Built For Champions</span></div>
+    </div>
+    <div class="carousel-slide" id="slide4">
+      <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhBJzy2Tb19eYa11BZVoczX4uSQw4KY9vO-MNuBZZpOQvyzAwKsiZSddVCIyfgCN0zUJTn5VS-fPEZeyajFwxUIiY2ny-48NVr_M9iLs5Sh_L1ZKqYPrj15iEHVdUKVWVlW9pwAHw7kSUn_3c7aTZX-dh9H0_kJyyJh56fiBYQavqD6E8PZLJft20BtlKqd" alt="ALVIC Gym"/>
+      <div class="slide-caption"><span>Strength Starts Here</span></div>
+    </div>
+    <div class="carousel-slide" id="slide5">
+      <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgmS4nqai-zoLvMkr03a6ly-5yGaiTtE8wTeUlwvTPz12-G-36I1vg_jt89DZ5OHgFZEKl7QJy-u3mEfWNlrRVs9yHJqlw_sQ_vIWpmK23PbZOHWq3HjixXhgyQ9nuXcJ8h5Xu8tYYM-90ezUbDqQD_WDrEDKyd2BoGuQQpeibB2dh3u_F-4RG2l5bdCw3a" alt="ALVIC Gym"/>
+      <div class="slide-caption"><span>World Class Equipment</span></div>
+    </div>
+    <div class="carousel-slide" id="slide6">
+      <img src="https://blogger.googleusercontent.com/img/a/AVvXsEh4dXclgC14CDbZpeyMlJMTy4prSTg-UPgaKk-2K7TZdPACO-DUmH9KEARV3zOMv5mloMeHUtoUnCFkfh602sJVRWK7vlJrWW1Lus-luui2kIeGup1-52Z1BBmjaEKVkiG0NawVYmzVg-_9U0PEk0WUF5SK04cP2x4HY24wER3fOs6PwuM3UhklEvLLqBX0" alt="ALVIC Gym"/>
+      <div class="slide-caption"><span>Your Transformation Awaits</span></div>
+    </div>
   </div>
-  <div class="slide-counter" id="slideCounter"><span class="cur">01</span> / 03</div>
+  <div class="slide-counter" id="slideCounter"><span class="cur">01</span> / 07</div>
   <button class="carousel-arrow prev" onclick="carouselMove(-1)"><i class="fas fa-chevron-left"></i></button>
   <button class="carousel-arrow next" onclick="carouselMove(1)"><i class="fas fa-chevron-right"></i></button>
-  <div class="carousel-dots">
-    <div class="c-dot active" onclick="goToSlide(0)"></div>
-    <div class="c-dot" onclick="goToSlide(1)"></div>
-    <div class="c-dot" onclick="goToSlide(2)"></div>
-  </div>
+  <div class="carousel-dots" id="carouselDots"></div>
 </div>
 
 <div class="quote-band fade-in">
@@ -372,14 +331,41 @@ footer{position:relative;z-index:2;background:var(--black);border-top:1px solid 
       <p class="section-sub">Everything you need to achieve your fitness goals &mdash; all under one roof.</p>
     </div>
     <div class="services-grid">
-      <div class="service-card fade-in"><span class="service-emoji">🏋️</span><div class="service-title">Personal Training</div><p class="service-desc">Get one-on-one guidance from certified trainers who create customized workout plans based on your goals.</p></div>
-      <div class="service-card fade-in"><span class="service-emoji">🔥</span><div class="service-title">Strength &amp; Weight Training</div><p class="service-desc">Build power, endurance, and muscle with our fully equipped strength training area.</p></div>
-      <div class="service-card fade-in"><span class="service-emoji">🏃</span><div class="service-title">Cardio Training</div><p class="service-desc">Boost your stamina and burn calories with our modern cardio equipment including treadmills, cycles, and more.</p></div>
-      <div class="service-card fade-in"><span class="service-emoji">🤸</span><div class="service-title">Group Fitness Classes</div><p class="service-desc">Stay motivated with high-energy group sessions like functional training, HIIT, and more.</p></div>
-      <div class="service-card fade-in"><span class="service-emoji">⚖️</span><div class="service-title">Weight Loss Programs</div><p class="service-desc">Structured programs designed to help you lose weight effectively and sustainably.</p></div>
-      <div class="service-card fade-in"><span class="service-emoji">🥗</span><div class="service-title">Diet &amp; Nutrition Guidance</div><p class="service-desc">Achieve faster results with proper diet planning tailored to your fitness goals.</p></div>
-      <div class="service-card fade-in"><span class="service-emoji">🔄</span><div class="service-title">Body Transformation Programs</div><p class="service-desc">Complete transformation plans focused on reshaping your body and lifestyle.</p></div>
-      <div class="service-card fade-in"><span class="service-emoji">🧘</span><div class="service-title">Flexibility &amp; Functional Training</div><p class="service-desc">Improve mobility, balance, and overall fitness with specialized training programs.</p></div>
+      <div class="service-card fade-in">
+        <div class="service-icon"><i class="fas fa-dumbbell"></i></div>
+        <div class="service-title">Personal Training</div>
+        <p class="service-desc">Get one-on-one guidance from certified trainers who create customized workout plans based on your goals.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon"><i class="fas fa-fire-alt"></i></div>
+        <div class="service-title">Strength &amp; Weight Training</div>
+        <p class="service-desc">Build power, endurance, and muscle with our fully equipped strength training area.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon"><i class="fas fa-users"></i></div>
+        <div class="service-title">Group Fitness Classes</div>
+        <p class="service-desc">Stay motivated with high-energy group sessions like functional training, HIIT, and more.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon"><i class="fas fa-weight"></i></div>
+        <div class="service-title">Weight Loss Programs</div>
+        <p class="service-desc">Structured programs designed to help you lose weight effectively and sustainably.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon"><i class="fas fa-apple-alt"></i></div>
+        <div class="service-title">Diet &amp; Nutrition Guidance</div>
+        <p class="service-desc">Achieve faster results with proper diet planning tailored to your fitness goals.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon"><i class="fas fa-sync-alt"></i></div>
+        <div class="service-title">Body Transformation Programs</div>
+        <p class="service-desc">Complete transformation plans focused on reshaping your body and lifestyle.</p>
+      </div>
+      <div class="service-card fade-in">
+        <div class="service-icon"><i class="fas fa-walking"></i></div>
+        <div class="service-title">Flexibility &amp; Functional Training</div>
+        <p class="service-desc">Improve mobility, balance, and overall fitness with specialized training programs.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -401,12 +387,28 @@ footer{position:relative;z-index:2;background:var(--black);border-top:1px solid 
           <li><i class="fas fa-check-circle"></i>Unlimited Gym Access</li>
           <li><i class="fas fa-check-circle"></i>All Modern Equipment</li>
           <li><i class="fas fa-check-circle"></i>Expert Trainer Support</li>
-          <li><i class="fas fa-check-circle"></i>Cardio &amp; Weight Training Area</li>
+          <li><i class="fas fa-check-circle"></i>Weight Training Area</li>
           <li><i class="fas fa-check-circle"></i>Diet &amp; Nutrition Guidance</li>
           <li><i class="fas fa-check-circle"></i>Group Fitness Classes</li>
         </ul>
-        <a href="upi://pay?pa=6379752756@ptsbi&pn=ALVIC%20GYM&am=600&cu=INR&tn=Gym%20Membership" class="btn-red" style="width:100%;text-align:center;display:block;">Join Now for &#8377;600/Month</a>
+        <a href="upi://pay?pa=8675947035-2@okbizaxis&pn=ALVIC%20GYM&am=600&cu=INR&tn=Gym%20Membership" class="btn-red" style="width:100%;text-align:center;display:block;">Join Now for &#8377;600/Month</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<div class="red-divider"></div>
+
+<!-- TERMS AND CONDITIONS SECTION -->
+<section id="terms">
+  <div class="section-inner">
+    <div class="section-header fade-in">
+      <div class="section-tag">Rules &amp; Regulations</div>
+      <h2 class="section-h2"><span class="w">Terms &amp; </span><span class="r">Conditions</span></h2>
+      <p class="section-sub">Please read our gym rules and membership terms carefully before joining.</p>
+    </div>
+    <div class="terms-image-wrap fade-in">
+      <img src="https://blogger.googleusercontent.com/img/a/AVvXsEhHAl-VhmFzcGxN4oKiRLS_qdCjSATObqSBFOYTTF2b-hTosNePN_kY5zZQQd45pulryRy3GPpFvvU5H5nt0tSMfzQpZjHn0SXn4x8mHF-Ho9AHpb0D6zgYTCNNzchY4F4ilTuRmmglRz7bdFrr6OTssR85ZyBPabfciZw2SvusntNzfrU1CUjG7Jve5USw" alt="ALVIC Gym Terms and Conditions"/>
     </div>
   </div>
 </section>
@@ -465,56 +467,6 @@ footer{position:relative;z-index:2;background:var(--black);border-top:1px solid 
   </div>
 </footer>
 
-<button id="attendFAB" onclick="openAttendance()" title="Mark Attendance">
-  <i class="fas fa-calendar-check"></i>
-  <span class="fab-tooltip">Mark Attendance</span>
-</button>
-
-<!-- ATTENDANCE MODAL -->
-<div id="attendanceModal" role="dialog" aria-modal="true" aria-label="Attendance">
-  <div class="modal-backdrop" onclick="closeAttendance()"></div>
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeAttendance()" aria-label="Close">&times;</button>
-    <div class="modal-logo-row">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIdlORy3LdN8tmkx0eRpfI599od1wMrqr5Hw&s" alt="Logo"/>
-      <span class="modal-title">Mark Attendance</span>
-    </div>
-    <div class="modal-divider"></div>
-    <div style="text-align:center;margin-bottom:18px;">
-      <span class="modal-date-badge">
-        <i class="fas fa-calendar-day"></i>
-        <span id="todayDate">—</span>
-      </span>
-    </div>
-    <label class="modal-label" for="attendanceInput">
-      <i class="fas fa-search" style="margin-right:6px;"></i>Search Your Name
-    </label>
-    <div class="modal-search-wrap">
-      <i class="fas fa-user"></i>
-      <input type="text" id="attendanceInput" placeholder="Type your name to search…" autocomplete="off" spellcheck="false"/>
-      <div id="autocompleteList"></div>
-    </div>
-    <p class="modal-hint">Start typing to find your name from the list — Alvic Gym Members</p>
-    <div id="selectedChip">
-      <i class="fas fa-user-check chip-icon"></i>
-      <span class="chip-name" id="chipNameText">—</span>
-      <button class="chip-clear" onclick="clearSelection()" title="Clear"><i class="fas fa-times"></i></button>
-    </div>
-    <div id="alreadyMarkedBanner">
-      <i class="fas fa-exclamation-triangle"></i>
-      <span id="alreadyMarkedText">Attendance already marked today.</span>
-    </div>
-    <!-- Google Sheet is connected via hardcoded script URL -->
-    <button id="submitAttendance" onclick="submitAttendance()" disabled>
-      <i class="fas fa-calendar-check"></i> Submit Attendance
-    </button>
-    <div id="attendanceResult">
-      <i class="fas fa-check-circle"></i>
-      <span id="attendanceResultText">Attendance marked successfully!</span>
-    </div>
-  </div>
-</div>
-
 <script>
 /* STARS */
 (function(){
@@ -566,16 +518,31 @@ function closeMenu(){
   document.getElementById('hamburger').classList.remove('open');
 }
 
-/* CAROUSEL */
-let curSlide=0;const totalSlides=3;let autoTimer;const padded=['01','02','03'];
+/* CAROUSEL — 7 slides */
+const TOTAL_SLIDES = 7;
+const PADDED = ['01','02','03','04','05','06','07'];
+let curSlide = 0;
+let autoTimer;
+
+// Build dots dynamically
+(function buildDots(){
+  const dotsEl = document.getElementById('carouselDots');
+  for(let i=0;i<TOTAL_SLIDES;i++){
+    const d = document.createElement('div');
+    d.className = 'c-dot' + (i===0?' active':'');
+    d.onclick = (()=>{const idx=i; return ()=>goToSlide(idx);})();
+    dotsEl.appendChild(d);
+  }
+})();
+
 function goToSlide(n){
   document.getElementById('slide'+curSlide).classList.remove('active');
   document.querySelectorAll('.c-dot')[curSlide].classList.remove('active');
-  curSlide=(n+totalSlides)%totalSlides;
+  curSlide=(n+TOTAL_SLIDES)%TOTAL_SLIDES;
   document.getElementById('slide'+curSlide).classList.add('active');
   document.querySelectorAll('.c-dot')[curSlide].classList.add('active');
   document.getElementById('carouselTrack').style.transform=`translateX(-${curSlide*100}%)`;
-  document.getElementById('slideCounter').innerHTML=`<span class="cur">${padded[curSlide]}</span> / 03`;
+  document.getElementById('slideCounter').innerHTML=`<span class="cur">${PADDED[curSlide]}</span> / 07`;
   resetAuto();
 }
 function carouselMove(dir){goToSlide(curSlide+dir);}
@@ -592,216 +559,6 @@ resetAuto();
 /* FADE IN */
 const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1});
 document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
-
-/* ══════════════════════════════
-   ATTENDANCE SYSTEM
-══════════════════════════════ */
-const STUDENTS = [
-  "AJAY M","AKASH K","AMIRTHA VARSINI S","ANITHA A","ANTRIYA RACHEL S",
-  "ARUMAI BALAJI M","ASHWATH B S","AUGUSTINE P","BHARANIDHARAN G","BHARATHI N",
-  "BOOMIKA K","DARSHAN R","DHAYANIDHI E","DIVYA SHRI N","FAISHA MEHARAJ S",
-  "GAUTHAM KRISHNA S","GNANASEELAN M","GOGULA ANAND","GOPALA RAMANAN R","GOWTHAM S",
-  "HAMSAVARTHAN K","HAREESH RAMANA A R G","HARIKRISHNAN R","HARISH R","HARRIS JEROLD J",
-  "HARSHA VARDHAN R","HASAN J","IRFAN PATHAN S","IYYANAR P","JAGADHISH G",
-  "JAYA SANTHI V","JEREEN HARRY J","JOHN RICHARD I","JOSHUA S","KAMALI L",
-  "KARTHIBAN R","KAUTHAM J","KAVIN M","KEERTHANA D","KISHORE KUMAR M",
-  "KRITHIK ADHARSH S","LAWRENCE A","MAHALAKSHMI N","MAHALAKSHMI S","MAHENDRAKUMAR M",
-  "MANIKANDAN G","MANIKANDAN K","MANOJ M","MICHELLE MERLIN M J","MOHAMED FAROOK K M",
-  "SIBIRAJ R","MOHAMED RENAS A","JOSE WILLIAM A"
-].sort();
-
-const STORAGE_KEY = 'alvic_attendance_log';
-// ✅ YOUR GOOGLE APPS SCRIPT URL — hardcoded so it works on ALL phones
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxMQqR6V-mEUw7dNpaEQQWsyRoHb7wNXsVDXf5mGNjgKx8AvjPszRJn7JFO08fTVNYRNA/exec';
-let selectedStudent = null;
-
-function todayStr(){
-  return new Date().toLocaleDateString('en-IN',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-}
-function todayKey(){
-  const d=new Date();
-  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-}
-function nowTimeStr(){
-  return new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
-}
-function getLog(){
-  try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');}catch(e){return {};}
-}
-function isMarkedToday(name){
-  const log=getLog();const key=todayKey();
-  return !!(log[key]&&log[key].includes(name));
-}
-function markLocalLog(name){
-  const log=getLog();const key=todayKey();
-  if(!log[key])log[key]=[];
-  if(!log[key].includes(name))log[key].push(name);
-  localStorage.setItem(STORAGE_KEY,JSON.stringify(log));
-}
-function getScriptUrl(){ return APPS_SCRIPT_URL; }
-
-function openAttendance(){
-  selectedStudent=null;
-  const modal=document.getElementById('attendanceModal');
-  modal.classList.add('open');
-  document.body.style.overflow='hidden';
-  document.getElementById('todayDate').textContent=todayStr();
-  document.getElementById('attendanceInput').value='';
-  document.getElementById('autocompleteList').innerHTML='';
-  document.getElementById('autocompleteList').classList.remove('show');
-  document.getElementById('selectedChip').classList.remove('show');
-  document.getElementById('alreadyMarkedBanner').classList.remove('show');
-  document.getElementById('attendanceResult').className='';
-  document.getElementById('submitAttendance').disabled=true;
-  document.getElementById('submitAttendance').innerHTML='<i class="fas fa-calendar-check"></i> Submit Attendance';
-  setTimeout(()=>document.getElementById('attendanceInput').focus(),200);
-}
-
-function closeAttendance(){
-  document.getElementById('attendanceModal').classList.remove('open');
-  document.body.style.overflow='';
-}
-
-/* Autocomplete */
-document.getElementById('attendanceInput').addEventListener('input',function(){
-  const query=this.value.trim().toUpperCase();
-  const list=document.getElementById('autocompleteList');
-  if(selectedStudent){
-    selectedStudent=null;
-    document.getElementById('selectedChip').classList.remove('show');
-    document.getElementById('submitAttendance').disabled=true;
-    document.getElementById('alreadyMarkedBanner').classList.remove('show');
-  }
-  if(!query){list.innerHTML='';list.classList.remove('show');return;}
-  const matches=STUDENTS.filter(s=>s.includes(query));
-  if(!matches.length){
-    list.innerHTML='<div class="autocomplete-item" style="color:rgba(255,255,255,0.35);cursor:default;"><i class="fas fa-search"></i> No match found</div>';
-    list.classList.add('show');return;
-  }
-  list.innerHTML=matches.slice(0,12).map(name=>{
-    const hi=name.replace(new RegExp(query,'g'),m=>`<span class="match">${m}</span>`);
-    return `<div class="autocomplete-item" onclick="selectStudent('${name.replace(/'/g,"\\'")}')"><i class="fas fa-user"></i>${hi}</div>`;
-  }).join('');
-  list.classList.add('show');
-});
-
-document.getElementById('attendanceInput').addEventListener('keydown',function(e){
-  const items=document.querySelectorAll('.autocomplete-item');
-  const sel=document.querySelector('.autocomplete-item.selected');
-  if(e.key==='ArrowDown'){e.preventDefault();const next=sel?sel.nextElementSibling:items[0];if(sel)sel.classList.remove('selected');if(next)next.classList.add('selected');}
-  else if(e.key==='ArrowUp'){e.preventDefault();const prev=sel?sel.previousElementSibling:items[items.length-1];if(sel)sel.classList.remove('selected');if(prev)prev.classList.add('selected');}
-  else if(e.key==='Enter'){e.preventDefault();if(sel)sel.click();}
-  else if(e.key==='Escape'){closeAttendance();}
-});
-
-function selectStudent(name){
-  selectedStudent=name;
-  document.getElementById('attendanceInput').value=name;
-  document.getElementById('autocompleteList').innerHTML='';
-  document.getElementById('autocompleteList').classList.remove('show');
-  document.getElementById('chipNameText').textContent=name;
-  document.getElementById('selectedChip').classList.add('show');
-  document.getElementById('alreadyMarkedBanner').classList.remove('show');
-  document.getElementById('attendanceResult').className='';
-  if(isMarkedToday(name)){
-    document.getElementById('alreadyMarkedText').textContent=`${name} — attendance already marked today.`;
-    document.getElementById('alreadyMarkedBanner').classList.add('show');
-    document.getElementById('submitAttendance').disabled=true;
-  } else {
-    document.getElementById('submitAttendance').disabled=false;
-  }
-}
-
-function clearSelection(){
-  selectedStudent=null;
-  document.getElementById('attendanceInput').value='';
-  document.getElementById('selectedChip').classList.remove('show');
-  document.getElementById('alreadyMarkedBanner').classList.remove('show');
-  document.getElementById('submitAttendance').disabled=true;
-  document.getElementById('attendanceResult').className='';
-  document.getElementById('attendanceInput').focus();
-}
-
-/* ══════════════════════════════════════════════════════
-   SUBMIT ATTENDANCE — FIXED: fetch no-cors + fallback
-══════════════════════════════════════════════════════ */
-async function submitAttendance(){
-  if(!selectedStudent) return;
-
-  const btn    = document.getElementById('submitAttendance');
-  const result = document.getElementById('attendanceResult');
-
-  btn.disabled = true;
-  btn.innerHTML = '<div class="spinner"></div> Submitting…';
-  result.className = '';
-
-  const name      = selectedStudent;
-  const date      = todayKey();
-  const time      = nowTimeStr();
-  const cls       = 'Alvic Gym';
-  const scriptUrl = getScriptUrl();
-
-  if(scriptUrl){
-    const url = scriptUrl
-      + "?name=" + encodeURIComponent(name)
-      + "&date=" + encodeURIComponent(date)
-      + "&time=" + encodeURIComponent(time)
-      + "&cls="  + encodeURIComponent(cls);
-
-    // METHOD 1: fetch with no-cors (works on all browsers including mobile)
-    let sent = false;
-    try {
-      await fetch(url, { method: 'GET', mode: 'no-cors' });
-      sent = true;
-    } catch(e1){
-      // METHOD 2: XMLHttpRequest fallback
-      try {
-        await new Promise((resolve, reject) => {
-          const xhr = new XMLHttpRequest();
-          xhr.open('GET', url, true);
-          xhr.onload = resolve;
-          xhr.onerror = reject;
-          xhr.ontimeout = reject;
-          xhr.timeout = 8000;
-          xhr.send();
-        });
-        sent = true;
-      } catch(e2){
-        // METHOD 3: script tag injection as last resort
-        try {
-          await new Promise((resolve) => {
-            const s = document.createElement('script');
-            s.src = url;
-            s.onload = s.onerror = () => { s.remove(); resolve(); };
-            document.head.appendChild(s);
-            setTimeout(resolve, 4000);
-          });
-          sent = true;
-        } catch(e3){ /* all methods failed */ }
-      }
-    }
-
-    // Always mark locally regardless
-    markLocalLog(name);
-
-    result.className = 'success';
-    result.innerHTML = `<i class="fas fa-check-circle"></i><span>✅ Attendance marked for <strong>${name}</strong> on ${date} at ${time} — saved to Google Sheet!</span>`;
-    btn.innerHTML = '<i class="fas fa-calendar-check"></i> Attendance Marked!';
-
-  } else {
-    // No script URL — save locally only
-    markLocalLog(name);
-    result.className = 'success';
-    result.innerHTML = `<i class="fas fa-check-circle"></i><span>✅ Attendance marked for <strong>${name}</strong> on ${date} at ${time} (local). Set Script URL to sync to Google Sheet.</span>`;
-    btn.innerHTML = '<i class="fas fa-calendar-check"></i> Attendance Marked!';
-  }
-
-  setTimeout(() => closeAttendance(), 3000);
-}
-
-document.addEventListener('keydown',e=>{
-  if(e.key==='Escape'&&document.getElementById('attendanceModal').classList.contains('open'))closeAttendance();
-});
 </script>
 </body>
 </html>
